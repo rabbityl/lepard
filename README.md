@@ -1,11 +1,8 @@
-## Lepard
-
-**Le**arning **Pa**rtial point cloud matching in **R**igid and **D**eformable scenes
+## Lepard: **Le**arning **Pa**rtial point cloud matching in **R**igid and **D**eformable scenes
 
 
 
-<img src="fig/demo.gif" alt="drawing" width="400"/>
-
+<img src="fig/demo.gif" alt="drawing" width="450"/>
 
 
 #### Method overview
@@ -15,7 +12,7 @@
 #### 4DMatch Benchmark
 4DMatch is a benchmark for matching and registration of partial point clouds with time-varying geometry.
 It is constructed using randomly selected 1761 sequences from [DeformingThings4D](https://github.com/rabbityl/DeformingThings4D).
-Below shows examples with different overlap ratios.
+Below shows point cloud pairs with different overlap ratios.
 
 <img src="fig/4dmatch_eg.jpg" alt="drawing" width="400"/>
 
