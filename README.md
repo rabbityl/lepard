@@ -1,7 +1,7 @@
 ## Lepard
 
 **Le**arning **Pa**rtial point cloud matching in **R**igid and **D**eformable scenes
-
+<img src="fig/pipeline.jpg" alt="drawing" width="200"/>
 ![Alt text](fig/demo.gif)
 
 
