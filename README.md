@@ -14,7 +14,7 @@
 4DMatch is a benchmark for matching and registration of partial point clouds with time-varying geometry.
 It is constructed using randomly selected 1761 sequences from [DeformingThings4D](https://github.com/rabbityl/DeformingThings4D).
 Below shows examples with different overlap ratios.
-![Alt text](fig/4dmatch_eg1.png)
+![Alt text](fig/4dmatch_eg.jpg)
 
 ### Installation
 We tested the code on python 3.8.10; Pytroch version '1.7.1' or '1.9.0+cu111'; GPU model GeForce RTX-2080 or Nvidia A100.
@@ -31,7 +31,7 @@ cd cpp_wrappers; sh compile_wrappers.sh; cd ..
 - 3DMatch/3DLoMatch benchmark (from the [Predator](https://github.com/overlappredator/OverlapPredator) paper):
  [train/val/test split (4.8GB)](https://share.phys.ethz.ch/~gsg/pairwise_reg/3dmatch.zip).
 
-- Pretrained model (Anonymous): [4DMatch & 3DMatch (500M)](https://drive.google.com/file/d/17QGX_wwtDPXN1GSKJHY-6RTIRPz90RLn/view?usp=sharing).
+- Pretrained model: [4DMatch & 3DMatch (500M)](https://drive.google.com/file/d/17QGX_wwtDPXN1GSKJHY-6RTIRPz90RLn/view?usp=sharing).
 
 
 
