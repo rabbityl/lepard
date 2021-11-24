@@ -1,0 +1,112 @@
+entangled: &entangled True
+
+kpfcn_config:
+  num_layers: 4
+  in_points_dim: 3
+  first_feats_dim: 256
+  final_feats_dim: 32
+  first_subsampling_dl: 0.025
+  in_feats_dim: 1
+  conv_radius: 2.5
+  deform_radius: 5.0
+  num_kernel_points: 15
+  KP_extent: 2.0
+  KP_influence: linear
+  aggregation_mode: sum
+  fixed_kernel_points: center
+  use_batch_norm: True
+  batch_norm_momentum: 0.02
+  deformable: False
+  modulated: False
+  add_cross_score: True
+  condition_feature: True
+  coarse_feature_dim: &coarse_feature_dim 528
+  fine_feature_dim:  264
+  coarse_match_radius: 0.06
+  coarse_level: -2
+
+
+coarse_matching: &coarse_matching
+  feature_dim: *coarse_feature_dim
+  entangled: *entangled
+  confidence_threshold: 0.2
+  dsmax_temperature: 0.1
+  match_type: &match_type 'sinkhorn' # [sinkhorn, dual_softmax]
+  skh_init_bin_score: 1.0
+  skh_iters: 3
+  skh_prefilter: False
+
+
+coarse_transformer:
+  feature_dim: *coarse_feature_dim
+  n_head: 4
+  layer_types: ['self', 'cross', 'positioning', 'self', 'cross']
+  positioning_type: &positioning_type 'procrustes' # options: [ 'randSO3' , 'procrustes', 'oracle']
+  pe_type: &pe_type "rotary" # options: [ 'rotary', 'sinusoidal']
+  vol_bnds: [ [ -3.6, -2.4,  1.14], [ 1.093, 0.78, 2.92 ]]
+  voxel_size:  0.08 #default 0.08 # 1.6cm
+  feature_matching : *coarse_matching
+  entangled: *entangled
+  procrustes:
+    max_condition_num: 30
+    sample_rate: 1.0
+
+
+
+train_loss:
+  focal_alpha: 0.25
+  focal_gamma: 2.0
+  pos_weight: 1.0
+  neg_weight: 1.0
+  motion_loss_type: L1
+  motion_weight: 0.
+  match_weight: 1
+  match_type: *match_type
+  positioning_type: *positioning_type
+  confidence_threshold_metric: 0.05
+  mutual_nearest: False
+  inlier_thr: 0.1 # 0.1m
+  fmr_thr: 0.05
+  registration_threshold: 0.2 # [3DMatch: 0.2m]
+  dataset: 3dmatch
+
+
+
+# misc
+exp_dir:   !join [  *pe_type, Entangled, *entangled]
+mode: train
+gpu_mode:  True
+verbose: True
+verbose_freq: 1000
+do_valid: True
+do_test: True
+pretrain: ''
+
+
+# optimiser:
+optimizer: SGD
+max_epoch: 1500
+lr: 0.015
+weight_decay: 0.000001
+momentum: 0.93
+scheduler: ExpLR
+scheduler_gamma: 0.95
+scheduler_freq: 1
+iter_size: 1
+
+
+
+#dataset:
+dataset: 3dmatch
+folder: -last
+batch_size: 8
+num_workers: 16
+augment_noise: 0.005
+data_root: data/indoor
+split: {
+  "train": configs/indoor/train_info.pkl,
+  "val": configs/indoor/val_info.pkl,
+  "test": configs/indoor/3DMatch.pkl
+#  "test": configs/indoor/3DLoMatch.pkl
+}
+

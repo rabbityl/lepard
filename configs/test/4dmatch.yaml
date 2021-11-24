@@ -1,0 +1,113 @@
+entangled: &entangled False
+
+# kpfcn backbone
+kpfcn_config:
+  num_layers: 4
+  in_points_dim: 3
+  first_feats_dim: 256
+  final_feats_dim: 32
+  first_subsampling_dl: 0.01
+  in_feats_dim: 1
+  conv_radius: 2.5
+  deform_radius: 5.0
+  num_kernel_points: 15
+  KP_extent: 2.0
+  KP_influence: linear
+  aggregation_mode: sum
+  fixed_kernel_points: center
+  use_batch_norm: True
+  batch_norm_momentum: 0.02
+  deformable: False
+  modulated: False
+  add_cross_score: True
+  condition_feature: True
+  coarse_feature_dim: &coarse_feature_dim 528 #[default 528, 1056]
+  fine_feature_dim:  264
+  coarse_match_radius: 0.024 # 0.05 for L: -3, 0.06 for L: -2, 0.1 for L: -1
+  coarse_level: -2
+#  fine_match_radius: 0.0375
+
+
+coarse_matching: &coarse_matching
+  feature_dim: *coarse_feature_dim
+  confidence_threshold: 0.2
+  dsmax_temperature: 0.1
+  entangled: *entangled
+  match_type: &match_type 'dual_softmax' #sinkhorn, dual_softmax
+  skh_init_bin_score: 1.0
+  skh_iters: 3
+  skh_prefilter: False
+
+
+coarse_transformer:
+  feature_dim: *coarse_feature_dim
+  n_head: 4
+  layer_types: ['self', 'cross', 'positioning', 'self', 'cross']
+  positioning_type: &positioning_type 'procrustes' # options: [ 'randSO3' , 'procrustes', 'oracle']
+  pe_type: &pe_type "rotary" # options: [ 'rotary', 'sinusoidal']
+  entangled: *entangled
+  vol_bnds: [ [ -3.6, -2.4,  1.14], [ 1.093, 0.78, 2.92 ]]
+  voxel_size: &voxel_size 0.04 #default 0.04
+  feature_matching : *coarse_matching
+  procrustes:
+    max_condition_num: 0 #40
+    sample_rate: 1.0
+
+
+train_loss:
+  focal_alpha: 0.25
+  focal_gamma: 2.0
+  pos_weight: 1.0
+  neg_weight: 1.0
+  motion_loss_type: L1
+  motion_weight: &motion_weight 0.1
+  match_weight: 1
+  match_type: *match_type
+  positioning_type: *positioning_type
+#  confidence_threshold : 0.2
+  confidence_threshold_metric: 0.1  #confidence_threshold for evaluation
+  inlier_thr: 0.04 # 4 cm
+  fmr_thr: 0.5
+  registration_threshold: 0.2 # [3DMatch: 0.2m]
+  dataset: 4dmatch
+  mutual_nearest: True
+
+
+# misc
+exp_dir:   !join  [  *positioning_type , *pe_type, entangled, *entangled, motwei, *motion_weight]
+mode: test
+gpu_mode:  True
+verbose: True
+verbose_freq: 1000
+do_valid: True
+do_test: True
+pretrain: 'pretrained/4dmatch/model_best_loss.pth'
+
+
+
+# optimiser:
+optimizer: SGD
+max_epoch: 1500
+lr: 0.015
+weight_decay: 0.000001
+momentum: 0.93
+scheduler: ExpLR
+scheduler_gamma: 0.95
+scheduler_freq: 1
+iter_size: 1
+
+
+
+#dataset:
+dataset: 4dmatch
+folder: -final
+batch_size: 1
+num_workers: 10
+augment_noise: 0.002
+data_root: /path/to/4DMatch
+split: {
+  "train": split/train,
+  "val": split/val,
+#  "test": split/4DMatch
+  "test": split/4DLoMatch
+}
