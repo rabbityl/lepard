@@ -1,8 +1,8 @@
-## Lepard: **Le**arning **Pa**rtial point cloud matching in **R**igid and **D**eformable scenes
+## Lepard: Learning Partial point cloud matching in Rigid and Deformable scenes
 
 
 
-<img src="fig/demo.gif" alt="drawing" width="450"/>
+<img src="fig/demo.gif" alt="drawing" width="500"/>
 
 
 ### Method overview
@@ -14,7 +14,7 @@
 It is constructed using randomly selected 1761 sequences from [DeformingThings4D](https://github.com/rabbityl/DeformingThings4D).
 Below shows point cloud pairs with different overlap ratios.
 
-<img src="fig/4dmatch_eg.jpg" alt="drawing" width="400"/>
+<img src="fig/4dmatch_eg.jpg" alt="drawing" width="500"/>
 
 
 ### Installation
