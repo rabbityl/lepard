@@ -1,8 +1,10 @@
 ## Lepard
 
 **Le**arning **Pa**rtial point cloud matching in **R**igid and **D**eformable scenes
-<img src="fig/pipeline.jpg" alt="drawing" width="200"/>
-![Alt text](fig/demo.gif)
+
+
+
+<img src="fig/demo.gif" alt="drawing" width="400"/>
 
 
 
@@ -14,7 +16,9 @@
 4DMatch is a benchmark for matching and registration of partial point clouds with time-varying geometry.
 It is constructed using randomly selected 1761 sequences from [DeformingThings4D](https://github.com/rabbityl/DeformingThings4D).
 Below shows examples with different overlap ratios.
-![Alt text](fig/4dmatch_eg.jpg)
+
+<img src="fig/4dmatch_eg.jpg" alt="drawing" width="400"/>
+
 
 ### Installation
 We tested the code on python 3.8.10; Pytroch version '1.7.1' or '1.9.0+cu111'; GPU model GeForce RTX-2080 or Nvidia A100.
