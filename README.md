@@ -5,11 +5,11 @@
 <img src="fig/demo.gif" alt="drawing" width="450"/>
 
 
-#### Method overview
+### Method overview
 ![Alt text](fig/pipeline.jpg)
 
 
-#### 4DMatch Benchmark
+### 4DMatch Benchmark
 4DMatch is a benchmark for matching and registration of partial point clouds with time-varying geometry.
 It is constructed using randomly selected 1761 sequences from [DeformingThings4D](https://github.com/rabbityl/DeformingThings4D).
 Below shows point cloud pairs with different overlap ratios.
