@@ -1,4 +1,4 @@
-## Lepard: Learning Partial point cloud matching in Rigid and Deformable scenes [[Paper](https://arxiv.org/abs/2105.01905)]
+## Lepard: Learning Partial point cloud matching in Rigid and Deformable scenes [[Paper](https://arxiv.org/abs/2111.12591)]
 
 
 
