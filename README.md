@@ -1,4 +1,4 @@
-## Lepard: Learning Partial point cloud matching in Rigid and Deformable scenes
+## Lepard: Learning Partial point cloud matching in Rigid and Deformable scenes [[Paper](https://arxiv.org/abs/2105.01905)]
 
 
 
@@ -75,7 +75,7 @@ If you use Lepard code or 4DMatch data please cite:
 @article{lepard2021, 
     title={Lepard: Learning partial point cloud matching in rigid and deformable scenes.}, 
     author={Yang Li and Tatsuya Harada},
-    journal={arXiv preprint},
+    journal={arXiv preprint arXiv:2111.12591},
     year={2021}
 }
 ```
