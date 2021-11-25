@@ -6,7 +6,7 @@
 
 
 ### Method overview
-![Alt text](fig/pipeline.jpg)
+<img src="fig/pipeline.jpg" alt="drawing" width="800"/>
 
 
 ### 4DMatch Benchmark
