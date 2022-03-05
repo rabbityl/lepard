@@ -75,7 +75,7 @@ If you use Lepard code or 4DMatch data please cite:
 @article{lepard2021, 
     title={Lepard: Learning partial point cloud matching in rigid and deformable scenes.}, 
     author={Yang Li and Tatsuya Harada},
-    journal={arXiv preprint arXiv:2111.12591},
-    year={2021}
+    journal={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year={2022}
 }
 ```
