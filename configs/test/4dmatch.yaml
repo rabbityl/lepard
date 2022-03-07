@@ -50,7 +50,7 @@ coarse_transformer:
   voxel_size: &voxel_size 0.04 #default 0.04
   feature_matching : *coarse_matching
   procrustes:
-    max_condition_num: 0 #40
+    max_condition_num: 40
     sample_rate: 1.0
 
 
