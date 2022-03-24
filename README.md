@@ -52,6 +52,9 @@ python main.py configs/test/4dmatch.yaml
 python main.py configs/train/4dmatch.yaml
 ```
 
+### Intergration to Non-rigid Registration
+An exmaple can be found here: [Nonrigid-ICP-Pytorch](https://github.com/rabbityl/Nonrigid-ICP-Pytorch)
+
 
 ### Train and evaluation on 3DMatch
 Download and extract the 3DMatch split to your custom folder. Then update the ```data_root``` in [configs/train/3dmatch.yaml](configs/train/3dmatch.yaml) and [configs/test/3dmatch.yaml](configs/test/3dmatch.yaml)
