@@ -27,8 +27,9 @@ cd cpp_wrappers; sh compile_wrappers.sh; cd ..
 
 
 ### Download data and pretrained model
-- 4DMatch/4DLoMatch benchmark: [train/val/test split (15.6GB)](https://drive.google.com/file/d/1YoHWhVaH5Yyo1gTjybiuaODA1lZrM_nG/view?usp=sharing).
-
+- 4DMatch/4DLoMatch benchmark:
+  - [train/val/test split (15.6GB)](https://drive.google.com/file/d/1YoHWhVaH5Yyo1gTjybiuaODA1lZrM_nG/view?usp=sharing).
+  - [Raw depth images (4.5GB)](https://drive.google.com/file/d/1fQrkMif9uFr-kBiCI-1fgaLTj30ns9-y/view?usp=sharing)
 - 3DMatch/3DLoMatch benchmark (from the [Predator](https://github.com/overlappredator/OverlapPredator) paper):
  [train/val/test split (4.8GB)](https://share.phys.ethz.ch/~gsg/pairwise_reg/3dmatch.zip).
 
